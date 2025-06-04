@@ -1,0 +1,44 @@
+ubuntu@ip-172-31-89-138:~/FoodApp$ cat multidiffcontainer.yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx-multidiffcontainerpod
+spec:
+  containers:
+  - name: nginx-container
+    image: nginx
+    ports:
+    - containerPort: 80
+
+  - name: ubuntu-container
+    image: ubuntu
+    command: ['sh', '-c', 'echo "hello" && sleep 20']
+ubuntu@ip-172-31-89-138:~/FoodApp$ cat multisamecontainer.yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx-multisamecontainerpod
+spec:
+  containers:
+  - name: nginx
+    image: nginx
+    ports:
+    - containerPort: 80
+
+  - name: nginx2
+    image: nginx
+    ports:
+    - containerPort: 80
+
+ubuntu@ip-172-31-89-138:~/FoodApp$ cat singlecontainer.yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx-singlecpod
+spec:
+  containers:
+  - name: nginx
+    image: nginx
+    ports:
+    - containerPort: 80
+ubuntu@ip-172-31-89-138:~/FoodApp$
